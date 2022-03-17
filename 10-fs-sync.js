@@ -1,16 +1,24 @@
-const { readFileSync, writeFileSync } = require("fs");
+const { createReadStrem } = require("fs");
 
-console.log("start");
-const first = readFileSync("./content/first.txt", "utf8");
-const second = readFileSync("./content/second.txt", "utf8");
+const stream = createReadStrem("./content/big.txt");
 
-/* console.log(first, second); */
+stream.on("data", () => {
+  console.log(result);
+});
 
-writeFileSync(
-  "./content/result-sync.txt",
-  `Here is the result : ${first}, ${second}`,
-  { flag: "a" }
-);
+// const { readFileSync, writeFileSync } = require("fs");
 
-console.log("done with this task");
-console.log("starting the next one");
+// console.log("start");
+// const first = readFileSync("./content/first.txt", "utf8");
+// const second = readFileSync("./content/second.txt", "utf8");
+
+// /* console.log(first, second); */
+
+// writeFileSync(
+//   "./content/result-sync.txt",
+//   `Here is the result : ${first}, ${second}`,
+//   { flag: "a" }
+// );
+
+// console.log("done with this task");
+// console.log("starting the next one");

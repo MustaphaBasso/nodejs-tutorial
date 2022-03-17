@@ -1,20 +1,29 @@
-// npm - global command, comes with node
-// npm --version
+// const { readFile, writeFile } = require('fs');
 
-// local dependency - use it only in this particular project
-// npm i <packageName>
+// console.log('start');
+// readFile('./content/first.txt', 'utf8', (err, result) => {
+//   if (err) {
+//     console.log(err);
+//     return;
+//   }
+//   const first = result;
+//   readFile('./content/second.txt', 'utf8', (err, result) => {
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+//     const second - result;
+//   })
+// })
 
-// global dependency - use it in any project
-// npm install -g <packageName>
-// sudo npm install -g <packageName> (mac)
+console.log("stream example");
 
-// package.json - manifest file (stores important info about project/package)
-// manual approach (create package.json in the root, create properties etc)
-// npm init (step by step, press enter to skip)
-// npm init -y (everything default)
+var http = require("http");
+var fs = require("fs");
 
-const _ = require("lodash");
-
-const items = [1, [2, [3, [4]]]];
-const newItems = _.flattenDeep(items);
-console.log(newItems);
+http
+  .createServer(function (req, res) {
+    const text = fs.readFileSync("./content/big.txt", "utf8");
+    res.end(text);
+  })
+  .listen(3000);
